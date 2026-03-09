@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#E8611A">
+  <title>FJ Senior Level 1 — เริ่มขยับ ฟิตร่างผู้สูงอายุ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app" id="app">
+
+    <!-- ========== CONSENT VIEW ========== -->
+    <div class="view active" id="view-consent">
+      <div class="header">
+        <div class="header-title">FITJUNCTIONS</div>
+        <div class="header-subtitle">Senior Fitness Program</div>
+      </div>
+      <div class="consent-screen">
+        <h1>👴 เริ่มขยับ ฟิตร่างผู้สูงอายุ<br>30 วัน</h1>
+        <p class="program-desc">โปรแกรม 30 วันสำหรับผู้สูงอายุที่อยากเริ่มขยับร่างกายอย่างปลอดภัย เน้นความแข็งแรงพื้นฐาน ทรงตัวได้ดีขึ้น และลดความเสี่ยงล้ม ทำที่บ้านได้ ใช้เวลาวันละ 10–15 นาที</p>
+
+        <div class="consent-section">
+          <h3>⚠️ สัญญาณอันตราย — หยุดทันที</h3>
+          <div class="safety-callout">
+            <ul id="red-flags"></ul>
+          </div>
+        </div>
+
+        <div class="consent-section">
+          <h3>📋 ยอมรับเงื่อนไขก่อนเริ่ม</h3>
+          <div id="consent-list"></div>
+        </div>
+
+        <button class="btn-activate" id="btn-activate" disabled>
+          เริ่มโปรแกรม — Activate
+        </button>
+      </div>
+    </div>
+
+    <!-- ========== DASHBOARD VIEW ========== -->
+    <div class="view" id="view-dashboard">
+      <div class="header">
+        <div class="header-title">เริ่มขยับ ฟิตร่างผู้สูงอายุ</div>
+        <div class="header-subtitle">30 Days Senior Level 1</div>
+      </div>
+      <div class="dashboard">
+        <div class="progress-section">
+          <div class="progress-label">
+            <span id="progress-text">0/30 วัน</span>
+            <span id="progress-pct">0%</span>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+        </div>
+        <div class="week-tabs" id="week-tabs"></div>
+        <div id="day-list"></div>
+      </div>
+    </div>
+
+    <!-- ========== DAY DETAIL VIEW ========== -->
+    <div class="view" id="view-day">
+      <div class="header">
+        <button class="header-back" id="btn-back">← กลับ</button>
+      </div>
+      <div class="day-detail" id="day-content"></div>
+    </div>
+
+    <!-- ========== PROGRESS VIEW ========== -->
+    <div class="view" id="view-progress">
+      <div class="header">
+        <div class="header-title">ความก้าวหน้า</div>
+        <div class="header-subtitle">Progress</div>
+      </div>
+      <div class="progress-view" id="progress-content"></div>
+    </div>
+
+    <!-- ========== SAFETY VIEW ========== -->
+    <div class="view" id="view-safety">
+      <div class="header">
+        <div class="header-title">ข้อมูลความปลอดภัย</div>
+        <div class="header-subtitle">Safety Reference</div>
+      </div>
+      <div class="safety-view" id="safety-content"></div>
+    </div>
+
+    <!-- ========== BOTTOM NAV ========== -->
+    <nav class="bottom-nav hidden" id="bottom-nav">
+      <button class="nav-item active" data-view="dashboard">
+        <span class="nav-icon">📅</span>
+        โปรแกรม
+      </button>
+      <button class="nav-item" data-view="progress">
+        <span class="nav-icon">📊</span>
+        ความก้าวหน้า
+      </button>
+      <button class="nav-item" data-view="safety">
+        <span class="nav-icon">🛡️</span>
+        ความปลอดภัย
+      </button>
+    </nav>
+  </div>
+
+  <!-- Video Modal -->
+  <div class="video-modal-overlay hidden" id="video-modal">
+    <div class="video-modal">
+      <button class="video-modal-close" id="video-modal-close">&times;</button>
+      <div class="video-modal-title" id="video-modal-title"></div>
+      <div class="video-container" id="video-modal-content"></div>
+    </div>
+  </div>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
