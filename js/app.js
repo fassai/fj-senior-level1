@@ -18,15 +18,21 @@
   let currentWeek = 1;
   let currentDay = null;
 
-  // ============ STORAGE HELPERS ============
+  // ============ STORAGE HELPERS (cached) ============
+  // Cache parsed localStorage to avoid redundant JSON.parse calls
+  const _cache = {};
+
   function getJSON(key, fallback) {
+    if (_cache[key] !== undefined) return _cache[key];
     try {
       const v = localStorage.getItem(key);
-      return v ? JSON.parse(v) : fallback;
+      _cache[key] = v ? JSON.parse(v) : fallback;
+      return _cache[key];
     } catch { return fallback; }
   }
 
   function setJSON(key, val) {
+    _cache[key] = val;
     localStorage.setItem(key, JSON.stringify(val));
   }
 
@@ -184,7 +190,11 @@
 
   window._setWeek = function(w) {
     currentWeek = w;
-    renderWeekTabs();
+    // Update active tab class without full re-render
+    document.querySelectorAll('.week-tab').forEach(tab => {
+      const weekNum = parseInt(tab.textContent.match(/\d+/));
+      tab.classList.toggle('active', weekNum === w);
+    });
     renderDayList();
   };
 
@@ -412,8 +422,40 @@
 
   // ============ EXERCISE ACTIONS ============
   window._toggleExercise = function(day, exIndex) {
-    toggleExercise(day, exIndex);
-    renderDayDetail();
+    const nowDone = toggleExercise(day, exIndex);
+    const d = currentDay;
+    if (!d) return;
+
+    // Targeted DOM updates instead of full re-render
+    const card = document.getElementById('exercise-card-' + exIndex);
+    const checkbox = document.getElementById('exercise-check-' + exIndex);
+    if (card) {
+      card.classList.toggle('exercise-done', nowDone);
+    }
+    if (checkbox) {
+      checkbox.classList.toggle('checked', nowDone);
+    }
+
+    // Update progress bar
+    const totalEx = d.exercises ? d.exercises.length : 0;
+    const doneEx = getExerciseDoneCount(d.day, totalEx);
+    const pct = totalEx > 0 ? Math.round((doneEx / totalEx) * 100) : 0;
+    const progEl = document.querySelector('.exercise-progress');
+    if (progEl) {
+      progEl.querySelector('span:first-child').textContent = `${doneEx}/${totalEx} ท่า`;
+      progEl.querySelector('span:last-child').textContent = `${pct}%`;
+      progEl.querySelector('.exercise-progress-fill').style.width = `${pct}%`;
+    }
+
+    // Update complete button
+    const allDone = totalEx === 0 || areAllExercisesDone(d.day, totalEx);
+    const completed = isDayCompleted(d.day);
+    const btn = document.getElementById('btn-complete-day');
+    if (btn && !completed) {
+      btn.disabled = !allDone;
+      btn.className = 'btn-complete' + (!allDone ? ' incomplete' : '');
+      btn.textContent = allDone ? 'เสร็จแล้ว ✅ — ไปวันถัดไป' : `ทำท่าให้ครบก่อน (${doneEx}/${totalEx})`;
+    }
   };
 
   window._openVideo = function(name, url) {

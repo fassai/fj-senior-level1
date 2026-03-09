@@ -324,7 +324,6 @@ body {
   border-radius: var(--radius);
   margin-bottom: 10px;
   cursor: pointer;
-  transition: box-shadow 0.15s;
   min-height: 72px;
   box-shadow: var(--shadow);
 }
@@ -550,7 +549,6 @@ body {
   padding: 16px;
   margin-bottom: 10px;
   box-shadow: var(--shadow);
-  transition: border-color 0.2s, background 0.2s;
 }
 
 .exercise-card.exercise-done {
@@ -575,7 +573,6 @@ body {
   justify-content: center;
   cursor: pointer;
   margin-top: 2px;
-  transition: all 0.2s;
   background: var(--white);
 }
 
