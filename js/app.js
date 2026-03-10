@@ -173,27 +173,25 @@
   function renderProgress() {
     const count = getCompletedCount();
     const pct = Math.round((count / 30) * 100);
-    document.getElementById('progress-text').textContent = `${count}/30 วัน`;
-    document.getElementById('progress-pct').textContent = `${pct}%`;
+    document.getElementById('progress-text').textContent = `ทำไปแล้ว ${count} วัน`;
     document.getElementById('progress-fill').style.width = `${pct}%`;
   }
 
   function renderWeekTabs() {
     const el = document.getElementById('week-tabs');
     el.innerHTML = PROGRAM.weeks.map(w => `
-      <button class="week-tab ${w.num === currentWeek ? 'active' : ''}" onclick="window._setWeek(${w.num})">
-        <span class="week-num">สัปดาห์ ${w.num}</span>
-        ${w.themeTH}
+      <button class="week-tab ${w.num === currentWeek ? 'active' : ''}"
+              data-week="${w.num}"
+              onclick="window._setWeek(${w.num})">
+        สัปดาห์ ${w.num}
       </button>
     `).join('');
   }
 
   window._setWeek = function(w) {
     currentWeek = w;
-    // Update active tab class without full re-render
     document.querySelectorAll('.week-tab').forEach(tab => {
-      const weekNum = parseInt(tab.textContent.match(/\d+/));
-      tab.classList.toggle('active', weekNum === w);
+      tab.classList.toggle('active', parseInt(tab.dataset.week) === w);
     });
     renderDayList();
   };
@@ -207,28 +205,24 @@
       const unlocked = isDayUnlocked(d.day);
       const totalEx = d.exercises ? d.exercises.length : 0;
       const doneEx = getExerciseDoneCount(d.day, totalEx);
-      const categoryLabels = {
-        strength: '🔴 Strength',
-        balance: '🟡 Balance',
-        mobility: '🟢 Mobility',
-        checkin: '📋 Check-in'
-      };
 
-      let progressHint = '';
-      if (unlocked && !completed && totalEx > 0 && doneEx > 0) {
-        progressHint = `<div class="day-category" style="color:var(--fj-orange); font-weight:400;">${doneEx}/${totalEx} ท่าเสร็จ</div>`;
+      let statusText = '';
+      if (completed) {
+        statusText = '<div class="day-status completed">✅ เสร็จแล้ว</div>';
+      } else if (unlocked && totalEx > 0 && doneEx > 0) {
+        statusText = `<div class="day-status in-progress">ทำไปแล้ว ${doneEx}/${totalEx} ท่า</div>`;
       }
 
       return `
         <div class="day-card ${completed ? 'completed' : ''} ${!unlocked ? 'locked' : ''}"
              onclick="${unlocked ? `window._openDay(${d.day})` : ''}">
-          <div class="day-number" style="background:${completed ? '' : d.color}">
+          <div class="day-number">
             <span>${d.day}</span>
           </div>
           <div class="day-info">
+            <div class="day-label">วันที่ ${d.day}</div>
             <div class="day-title">${d.titleTH}</div>
-            <div class="day-category">${categoryLabels[d.category] || d.category}</div>
-            ${progressHint}
+            ${statusText}
           </div>
           <div class="day-arrow"></div>
         </div>
@@ -256,69 +250,64 @@
 
     let html = '';
 
-    // Header
+    // Header — always FJ orange, no RPE, no English
     html += `
-      <div class="day-header" style="background:${d.color}">
-        <div class="day-num">Day ${d.day} · สัปดาห์ที่ ${d.week}</div>
+      <div class="day-header">
+        <div class="day-num">วันที่ ${d.day}</div>
         <h2>${d.titleTH}</h2>
-        <div class="day-sub">${d.subtitle}</div>
-        ${d.rpeTarget ? `<span class="rpe-badge">RPE เป้าหมาย: ${d.rpeTarget}/10</span>` : ''}
       </div>
     `;
 
-    // Retest banner for check-in days
+    // Retest banner for check-in days — Thai only
     if (d.isCheckin) {
-      const weekNum = d.week;
       html += `
         <div class="retest-banner">
-          <h3>🏆 Retest สัปดาห์ที่ ${weekNum}${d.isFinal ? ' — วันสุดท้าย!' : ''}</h3>
-          <p>วัดผลและบันทึกความก้าวหน้าของคุณ เปรียบเทียบกับสัปดาห์ก่อน</p>
+          <h3>🏆 ${d.isFinal ? 'วันวัดผลสุดท้าย!' : 'วัดผลประจำสัปดาห์'}</h3>
+          <p>บันทึกความก้าวหน้าของคุณ</p>
         </div>
       `;
     }
 
-    // Why important
-    if (d.whyImportant) {
+    // Collapsible: Why important + Education video
+    if (d.whyImportant || d.educationTopic) {
       html += `
-        <div class="why-section">
-          <h3>💡 ทำไมวันนี้ถึงสำคัญ</h3>
-          <p>${d.whyImportant}</p>
-        </div>
+        <details class="learn-more">
+          <summary>💡 อยากรู้เพิ่ม</summary>
+          <div class="learn-content">
+            ${d.whyImportant ? `<p>${d.whyImportant}</p>` : ''}
+            <div class="video-section">
+              <h4>🎬 ${d.educationTopic} (${d.educationDuration})</h4>
+              <div class="video-embed">
+                ${d.videoUrl ? `<iframe src="${getEmbedUrl(d.videoUrl)}" allowfullscreen></iframe>` : `
+                  <div class="video-placeholder">
+                    <div class="icon">🎥</div>
+                    <p>วิดีโอจะเพิ่มเร็วๆ นี้</p>
+                  </div>
+                `}
+              </div>
+            </div>
+          </div>
+        </details>
       `;
     }
 
-    // Education video
-    html += `
-      <div class="video-section">
-        <h3>🎬 ${d.educationTopic} (${d.educationDuration})</h3>
-        <div class="video-embed">
-          ${d.videoUrl ? `<iframe src="${getEmbedUrl(d.videoUrl)}" allowfullscreen></iframe>` : `
-            <div class="video-placeholder">
-              <div class="icon">🎥</div>
-              <p>วิดีโอจะเพิ่มเร็วๆ นี้<br><small>${d.educationTopic}</small></p>
-            </div>
-          `}
-        </div>
-      </div>
-    `;
-
-    // Exercises with checkboxes and video buttons
+    // Exercises — simplified: Thai name, combined reps, no benefit text
     if (d.exercises && d.exercises.length > 0) {
       const pct = totalEx > 0 ? Math.round((doneEx / totalEx) * 100) : 0;
       html += `
         <div class="exercise-section">
-          <h3>💪 ท่าออกกำลังกายวันนี้</h3>
           <div class="exercise-progress">
-            <span>${doneEx}/${totalEx} ท่า</span>
             <div class="exercise-progress-bar">
               <div class="exercise-progress-fill" style="width:${pct}%"></div>
             </div>
-            <span>${pct}%</span>
+            <span>${doneEx}/${totalEx} ท่า</span>
           </div>
       `;
       d.exercises.forEach((ex, i) => {
         const done = isExerciseDone(d.day, i);
         const hasVideo = !!(ex.videoUrl);
+        const setsNum = parseInt(ex.sets) || 1;
+        const repsLine = setsNum > 1 ? `${ex.reps} · ${ex.sets}` : ex.reps;
         html += `
           <div class="exercise-card ${done ? 'exercise-done' : ''}" id="exercise-card-${i}">
             <div class="exercise-card-header">
@@ -326,19 +315,15 @@
                    onclick="window._toggleExercise(${d.day}, ${i})"
                    id="exercise-check-${i}"></div>
               <div class="exercise-card-body">
-                <div class="exercise-name">${ex.nameEN}</div>
-                <div class="exercise-name-th">${ex.nameTH}</div>
+                <div class="exercise-name">${ex.nameTH}</div>
                 <div class="exercise-details">
-                  <span class="exercise-tag">${ex.reps}</span>
-                  <span class="exercise-tag">${ex.sets}</span>
-                  ${ex.rest ? `<span class="exercise-tag">พัก ${ex.rest}</span>` : ''}
+                  <span class="exercise-tag">${repsLine}</span>
                 </div>
-                ${ex.benefit ? `<div class="exercise-benefit">${ex.benefit}</div>` : ''}
                 <div class="exercise-actions">
                   <button class="btn-watch-video ${hasVideo ? '' : 'no-video'}"
-                          onclick="${hasVideo ? `window._openVideo('${ex.nameEN}', '${ex.videoUrl}')` : ''}"
+                          onclick="${hasVideo ? `window._openVideo('${ex.nameTH}', '${ex.videoUrl}')` : ''}"
                           ${hasVideo ? '' : 'disabled'}>
-                    ▶ ดูวิดีโอท่า${hasVideo ? '' : ' (เร็วๆ นี้)'}
+                    ▶ ดูวิดีโอ${hasVideo ? '' : ' (เร็วๆ นี้)'}
                   </button>
                 </div>
               </div>
@@ -349,11 +334,11 @@
       html += '</div>';
     }
 
-    // Check-in / Retest fields
+    // Check-in fields — Thai labels
     if (d.isCheckin && d.checkinFields.length > 0) {
       html += `
         <div class="checkin-section">
-          <h3>📋 บันทึกผล Retest${d.isFinal ? ' — วันสุดท้าย!' : ''}</h3>
+          <h3>📋 บันทึกผล${d.isFinal ? ' — วันสุดท้าย!' : ''}</h3>
       `;
       d.checkinFields.forEach(f => {
         const savedVal = checkins[f.key] || '';
@@ -393,14 +378,13 @@
         <div class="celebration">
           <div class="emoji">🎉🏆</div>
           <h2>ยินดีด้วย!</h2>
-          <p>คุณทำครบ 30 วันแล้ว! ตอนนี้คุณมีความแข็งแรง ทรงตัว และความมั่นใจมากขึ้น</p>
+          <p>คุณทำครบ 30 วันแล้ว!</p>
         </div>
       `;
     }
 
-    // Complete button — requires all exercises ticked
+    // Complete button
     const allDone = totalEx === 0 || areAllExercisesDone(d.day, totalEx);
-    const canComplete = allDone && !completed;
     html += `
       <button class="btn-complete ${completed ? 'completed' : ''} ${!allDone && !completed ? 'incomplete' : ''}"
               id="btn-complete-day"
@@ -426,28 +410,20 @@
     const d = currentDay;
     if (!d) return;
 
-    // Targeted DOM updates instead of full re-render
     const card = document.getElementById('exercise-card-' + exIndex);
     const checkbox = document.getElementById('exercise-check-' + exIndex);
-    if (card) {
-      card.classList.toggle('exercise-done', nowDone);
-    }
-    if (checkbox) {
-      checkbox.classList.toggle('checked', nowDone);
-    }
+    if (card) card.classList.toggle('exercise-done', nowDone);
+    if (checkbox) checkbox.classList.toggle('checked', nowDone);
 
-    // Update progress bar
     const totalEx = d.exercises ? d.exercises.length : 0;
     const doneEx = getExerciseDoneCount(d.day, totalEx);
     const pct = totalEx > 0 ? Math.round((doneEx / totalEx) * 100) : 0;
     const progEl = document.querySelector('.exercise-progress');
     if (progEl) {
-      progEl.querySelector('span:first-child').textContent = `${doneEx}/${totalEx} ท่า`;
-      progEl.querySelector('span:last-child').textContent = `${pct}%`;
+      progEl.querySelector('span').textContent = `${doneEx}/${totalEx} ท่า`;
       progEl.querySelector('.exercise-progress-fill').style.width = `${pct}%`;
     }
 
-    // Update complete button
     const allDone = totalEx === 0 || areAllExercisesDone(d.day, totalEx);
     const completed = isDayCompleted(d.day);
     const btn = document.getElementById('btn-complete-day');
@@ -506,50 +482,40 @@
 
     let html = `
       <h2>📊 ความก้าวหน้าของคุณ</h2>
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-num">${count}</div>
-          <div class="stat-label">วันที่ทำแล้ว</div>
+      <div class="progress-overview">
+        <div class="progress-big-num">${count}<span>/30</span></div>
+        <div class="progress-big-label">วันที่ทำแล้ว</div>
+        <div class="progress-bar" style="margin-top:12px;">
+          <div class="progress-fill" style="width:${pct}%"></div>
         </div>
-        <div class="stat-card">
-          <div class="stat-num">${pct}%</div>
-          <div class="stat-label">ความก้าวหน้า</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">${30 - count}</div>
-          <div class="stat-label">วันที่เหลือ</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-num">${currentWeek}</div>
-          <div class="stat-label">สัปดาห์ปัจจุบัน</div>
-        </div>
+        <div class="progress-summary">${pct > 0 ? `เก่งมาก! ทำไปแล้ว ${pct}%` : 'เริ่มกันเลย!'}</div>
       </div>
     `;
 
-    // Retest comparison table
+    // Checkin comparison table — all Thai
     const hasAnyCheckin = checkinDays.some(d => checkins[d]);
     if (hasAnyCheckin) {
       html += `
         <div class="checkin-history">
-          <h3>🏆 ผล Retest รายสัปดาห์</h3>
+          <h3>🏆 ผลวัดประจำสัปดาห์</h3>
           <table class="checkin-table">
             <thead>
               <tr>
                 <th>รายการ</th>
-                ${checkinDays.map(d => `<th>Day ${d}</th>`).join('')}
+                ${checkinDays.map(d => `<th>วันที่ ${d}</th>`).join('')}
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Chair Stand</td>
+                <td>ลุก-นั่ง</td>
                 ${checkinDays.map(d => `<td>${checkins[d]?.chairStand || '—'}</td>`).join('')}
               </tr>
               <tr>
-                <td>One-Leg (ขวา)</td>
+                <td>ยืนขาเดียว (ขวา)</td>
                 ${checkinDays.map(d => `<td>${checkins[d]?.oneLegR || '—'}</td>`).join('')}
               </tr>
               <tr>
-                <td>One-Leg (ซ้าย)</td>
+                <td>ยืนขาเดียว (ซ้าย)</td>
                 ${checkinDays.map(d => `<td>${checkins[d]?.oneLegL || '—'}</td>`).join('')}
               </tr>
               <tr>
@@ -558,7 +524,7 @@
               </tr>
               ${checkins[30]?.stepTest ? `
               <tr>
-                <td>Step Test</td>
+                <td>เดิน 2 นาที</td>
                 ${checkinDays.map(d => `<td>${d === 30 ? (checkins[30]?.stepTest || '—') : '—'}</td>`).join('')}
               </tr>
               ` : ''}
@@ -567,7 +533,7 @@
         </div>
       `;
     } else {
-      html += `<p style="color:var(--gray-500); text-align:center; margin-top:20px;">ยังไม่มีข้อมูล Retest — ทำ Day 7 เพื่อเริ่มบันทึกผล</p>`;
+      html += `<p style="color:var(--gray-500); text-align:center; margin-top:20px;">ยังไม่มีข้อมูล — ทำวันที่ 7 เพื่อเริ่มบันทึกผล</p>`;
     }
 
     document.getElementById('progress-content').innerHTML = html;
@@ -578,11 +544,11 @@
     let html = `<h2>🛡️ ข้อมูลความปลอดภัย</h2>`;
 
     html += `
-      <h3 style="margin-bottom:10px;">ระดับความเหนื่อย (RPE)</h3>
-      <p style="font-size:0.85rem; color:var(--gray-500); margin-bottom:12px;">Level 1 ควรอยู่ที่ RPE 2–4 เท่านั้น</p>
+      <h3 style="margin-bottom:10px;">ระดับความเหนื่อย</h3>
+      <p style="font-size:0.85rem; color:var(--gray-500); margin-bottom:12px;">โปรแกรมนี้ควรอยู่ที่ระดับ 2–4 เท่านั้น</p>
       <table class="rpe-table">
         <thead>
-          <tr><th>RPE</th><th>ระดับ</th><th>สัญญาณ</th></tr>
+          <tr><th>ระดับ</th><th>ชื่อ</th><th>สัญญาณ</th></tr>
         </thead>
         <tbody>
     `;

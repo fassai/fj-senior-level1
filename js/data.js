@@ -42,9 +42,9 @@ const SAFETY = {
     'หัวใจเต้นผิดปกติ'
   ],
   dailyCheck: [
-    { condition: 'ปวดกล้ามเนื้อมาก (DOMS)', action: 'ทำเฉพาะท่ายืดเหยียดวันนั้น' },
-    { condition: 'เพลียหรือนอนไม่หลับ', action: 'ลดจำนวน Set เหลือ 1 Set' },
-    { condition: 'ปวดข้อ (Joint Pain)', action: 'ข้ามท่าที่ต้องลงน้ำหนักในข้อนั้น' },
+    { condition: 'ปวดกล้ามเนื้อมาก', action: 'ทำเฉพาะท่ายืดเหยียดวันนั้น' },
+    { condition: 'เพลียหรือนอนไม่หลับ', action: 'ลดจำนวนเซตเหลือ 1 เซต' },
+    { condition: 'ปวดข้อ', action: 'ข้ามท่าที่ต้องลงน้ำหนักในข้อนั้น' },
     { condition: 'วัดความดันได้สูงกว่าปกติ', action: 'ทำแค่ท่ายืดเหยียดและหายใจ' },
     { condition: 'รู้สึกดีและพร้อม', action: 'เริ่มเลย! 💪' }
   ]
@@ -178,9 +178,9 @@ const DAYS = [
     reflection: 'สิ่งที่ยากที่สุดสัปดาห์นี้คืออะไร?',
     isCheckin: true,
     checkinFields: [
-      { label: 'Chair Stand Test (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
-      { label: 'One-Leg Stand (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
-      { label: 'One-Leg Stand (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
+      { label: 'ลุก-นั่ง (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
+      { label: 'ยืนขาเดียว (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
+      { label: 'ยืนขาเดียว (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
       { label: 'ความรู้สึกโดยรวม', unit: '/10', key: 'feeling' }
     ]
   },
@@ -312,9 +312,9 @@ const DAYS = [
     reflection: 'เปรียบกับสัปดาห์ที่ 1 รู้สึกยังไง?',
     isCheckin: true,
     checkinFields: [
-      { label: 'Chair Stand Test (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
-      { label: 'One-Leg Stand (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
-      { label: 'One-Leg Stand (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
+      { label: 'ลุก-นั่ง (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
+      { label: 'ยืนขาเดียว (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
+      { label: 'ยืนขาเดียว (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
       { label: 'ความรู้สึกโดยรวม', unit: '/10', key: 'feeling' }
     ]
   },
@@ -446,9 +446,9 @@ const DAYS = [
     reflection: 'กิจวัตรประจำวันอะไรที่ง่ายขึ้น?',
     isCheckin: true,
     checkinFields: [
-      { label: 'Chair Stand Test (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
-      { label: 'One-Leg Stand (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
-      { label: 'One-Leg Stand (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
+      { label: 'ลุก-นั่ง (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
+      { label: 'ยืนขาเดียว (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
+      { label: 'ยืนขาเดียว (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
       { label: 'ความรู้สึกโดยรวม', unit: '/10', key: 'feeling' }
     ]
   },
@@ -580,9 +580,9 @@ const DAYS = [
     reflection: 'สิ่งที่เปลี่ยนไปมากที่สุดในชีวิตประจำวันคืออะไร?',
     isCheckin: true,
     checkinFields: [
-      { label: 'Chair Stand Test (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
-      { label: 'One-Leg Stand (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
-      { label: 'One-Leg Stand (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
+      { label: 'ลุก-นั่ง (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
+      { label: 'ยืนขาเดียว (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
+      { label: 'ยืนขาเดียว (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
       { label: 'ความรู้สึกโดยรวม', unit: '/10', key: 'feeling' }
     ]
   },
@@ -619,10 +619,10 @@ const DAYS = [
     isCheckin: true,
     isFinal: true,
     checkinFields: [
-      { label: 'Chair Stand Test (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
-      { label: 'One-Leg Stand (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
-      { label: 'One-Leg Stand (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
-      { label: '2-Minute Step Test', unit: 'ก้าว', key: 'stepTest' },
+      { label: 'ลุก-นั่ง (30 วินาที)', unit: 'ครั้ง', key: 'chairStand' },
+      { label: 'ยืนขาเดียว (ขาขวา)', unit: 'วินาที', key: 'oneLegR' },
+      { label: 'ยืนขาเดียว (ขาซ้าย)', unit: 'วินาที', key: 'oneLegL' },
+      { label: 'เดิน 2 นาที', unit: 'ก้าว', key: 'stepTest' },
       { label: 'ความรู้สึกโดยรวม', unit: '/10', key: 'feeling' }
     ]
   }
