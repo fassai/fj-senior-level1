@@ -81,7 +81,7 @@ const DAYS = [
     videoUrl: '',
     exercises: [
       { nameEN: 'One-Leg Stand', nameTH: 'ยืนขาเดียว — มีพยุง', reps: '5–8 วินาที แต่ละขา', sets: '2 เซต', rest: '30 วินาที', benefit: 'สร้างความมั่นคงข้อเท้าและสะโพก' },
-      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินส้นชิดปลายเท้า', reps: '6 ก้าว', sets: '2 เซต', rest: '30 วินาที', benefit: 'ฝึกระบบประสาท ควบคุมทรงตัวบนพื้นฐานแคบ' },
+      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินต่อเท้า ด้วยท่า Heel-to-Toe Walk', reps: '6 ก้าว', sets: '2 เซต', rest: '30 วินาที', benefit: 'ฝึกระบบประสาท ควบคุมทรงตัวบนพื้นฐานแคบ' },
       { nameEN: 'Calf Raises', nameTH: 'ยกส้นเท้า', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: 'เสริมน่อง เพิ่มแรงดันเวลาเดิน' }
     ],
     rpeTarget: '2',
@@ -98,7 +98,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก', reps: '10 ครั้ง', sets: '1 เซต', rest: '30 วินาที', benefit: '' },
+      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก ด้วยท่า Scapular Activation', reps: '10 ครั้ง', sets: '1 เซต', rest: '30 วินาที', benefit: '' },
       { nameEN: 'Shoulder Rolls', nameTH: 'หมุนไหล่', reps: '8 ครั้ง', sets: '2 เซต', rest: '20 วินาที', benefit: '' },
       { nameEN: 'Chin Tuck', nameTH: 'ดึงคาง', reps: '8 ครั้ง', sets: '1 เซต', rest: '', benefit: '' }
     ],
@@ -116,7 +116,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Knee Extension', nameTH: 'เหยียดเข่า — นั่ง ใช้ยาง', reps: '10 ครั้ง แต่ละขา', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
+      { nameEN: 'Knee Extension', nameTH: 'เหยียดเข่า — ยืดยาง ด้วยท่า Knee Extension', reps: '10 ครั้ง แต่ละขา', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
       { nameEN: 'Heel Walking', nameTH: 'เดินส้นเท้า', reps: '6–8 ก้าว', sets: '2 เซต', rest: '30 วินาที', benefit: '' },
       { nameEN: 'Calf Stretch', nameTH: 'ยืดน่อง — กำแพง', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
@@ -136,7 +136,7 @@ const DAYS = [
     exercises: [
       { nameEN: 'Hip Abduction', nameTH: 'ยกขาด้านข้าง', reps: '8–10 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
       { nameEN: 'Hip Extension', nameTH: 'เหยียดสะโพก', reps: '10 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
-      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน — นั่ง', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน ด้วยท่า T-Spine Rotation', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '3',
     reflection: '',
@@ -152,9 +152,9 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Trunk Stability Roll', nameTH: 'กลิ้งลูกบอล', reps: '8 ครั้ง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
+      { nameEN: 'Trunk Stability Roll', nameTH: 'ฝึกแกนกลางลำตัว ด้วยท่า Trunk Stability Roll', reps: '8 ครั้ง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
       { nameEN: 'Seated March', nameTH: 'ย่ำเท้า — นั่ง', reps: '20 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Cat-Camel', nameTH: 'แมว-อูฐ', reps: '6 รอบช้าๆ', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Cat-Camel', nameTH: 'ยืดหลัง ด้วยท่า Cat-Camel', reps: '6 รอบช้าๆ', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '2',
     reflection: '',
@@ -198,7 +198,7 @@ const DAYS = [
     exercises: [
       { nameEN: 'Knee Flexion', nameTH: 'งอเข่า — ยืน', reps: '10 ครั้ง แต่ละขา', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Lateral Step', nameTH: 'ก้าวด้านข้าง — ยาง', reps: '6 ก้าว แต่ละทิศทาง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินส้นชิดปลายเท้า', reps: '8 ก้าว', sets: '2 เซต', rest: '', benefit: '' }
+      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินต่อเท้า ด้วยท่า Heel-to-Toe Walk', reps: '8 ก้าว', sets: '2 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '3',
     reflection: '',
@@ -216,7 +216,7 @@ const DAYS = [
     exercises: [
       { nameEN: 'Neck Rotation', nameTH: 'หมุนคอ', reps: '6 รอบช้าๆ แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Shoulder Rotation', nameTH: 'หมุนไหล่', reps: '8 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก ด้วยท่า Scapular Activation', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '1–2',
     reflection: '',
@@ -232,7 +232,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Standing Fire Hydrant', nameTH: 'ยกขางอสะโพก — ยืน', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Standing Fire Hydrant', nameTH: 'ยกขางอสะโพก ด้วยท่า Fire Hydrant', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Hip Extension', nameTH: 'เหยียดสะโพก', reps: '10 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Calf Raises', nameTH: 'ยกส้นเท้า', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' }
     ],
@@ -252,7 +252,7 @@ const DAYS = [
     exercises: [
       { nameEN: 'One-Leg Stand', nameTH: 'ยืนขาเดียว — มีพยุง', reps: '8–10 วินาที แต่ละขา', sets: '2 เซต', rest: '30 วินาที', benefit: '' },
       { nameEN: 'Knee Bends', nameTH: 'งอเข่า — ยืน', reps: '8–10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Wall Ankle Mobilization', nameTH: 'ยืดข้อเท้า — กำแพง', reps: '6 ครั้ง แต่ละขา', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Wall Ankle Mobilization', nameTH: 'ยืดข้อเท้า ด้วยท่า Wall Ankle Mobilization', reps: '6 ครั้ง แต่ละขา', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '2–3',
     reflection: '',
@@ -269,8 +269,8 @@ const DAYS = [
     videoUrl: '',
     exercises: [
       { nameEN: 'Chair Stand', nameTH: 'ลุก-นั่งจากเก้าอี้', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Posterior Tibialis Activation', nameTH: 'กระตุ้นหลังแข้ง', reps: '6 ครั้ง แต่ละเท้า', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Monster Walk', nameTH: 'เดินมอนสเตอร์ — ยาง', reps: '4 ก้าวหน้า + 4 ก้าวหลัง', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Posterior Tibialis Activation', nameTH: 'กระตุ้นกล้ามเนื้อหลังแข้ง ด้วยท่า Posterior Tibialis', reps: '6 ครั้ง แต่ละเท้า', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Monster Walk', nameTH: 'เดินกว้างยืดยาง ด้วยท่า Monster Walk', reps: '4 ก้าวหน้า + 4 ก้าวหลัง', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '3',
     reflection: '',
@@ -286,7 +286,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน ด้วยท่า T-Spine Rotation', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Lateral Step', nameTH: 'ก้าวด้านข้าง', reps: '6 ก้าว แต่ละทิศทาง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Toe Raises', nameTH: 'ยกปลายเท้า', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' }
     ],
@@ -305,7 +305,7 @@ const DAYS = [
     videoUrl: '',
     exercises: [
       { nameEN: 'Seated March', nameTH: 'ย่ำเท้า — นั่ง', reps: '20 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Cat-Camel', nameTH: 'แมว-อูฐ', reps: '6 รอบ', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Cat-Camel', nameTH: 'ยืดหลัง ด้วยท่า Cat-Camel', reps: '6 รอบ', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Chest Opener', nameTH: 'เปิดหน้าอก', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '1–2',
@@ -331,7 +331,7 @@ const DAYS = [
     videoUrl: '',
     exercises: [
       { nameEN: 'Heel Walking', nameTH: 'เดินส้นเท้า', reps: '8–10 ก้าว', sets: '2 เซต', rest: '', benefit: '' },
-      { nameEN: 'Knee Extension', nameTH: 'เหยียดเข่า — ยาง', reps: '12 ครั้ง แต่ละขา', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Knee Extension', nameTH: 'เหยียดเข่า — ยืดยาง ด้วยท่า Knee Extension', reps: '12 ครั้ง แต่ละขา', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Calf Stretch', nameTH: 'ยืดน่อง', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '3',
@@ -385,8 +385,8 @@ const DAYS = [
     videoUrl: '',
     exercises: [
       { nameEN: 'One-Leg Stand', nameTH: 'ยืนขาเดียว — มีพยุง', reps: '10 วินาที แต่ละข้าง', sets: '2 เซต', rest: '30 วินาที', benefit: '' },
-      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินส้นชิดปลายเท้า', reps: '8–10 ก้าว', sets: '2 เซต', rest: '30 วินาที', benefit: '' },
-      { nameEN: 'Posterior Tibialis Activation', nameTH: 'กระตุ้นหลังแข้ง', reps: '6 ครั้ง แต่ละเท้า', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินต่อเท้า ด้วยท่า Heel-to-Toe Walk', reps: '8–10 ก้าว', sets: '2 เซต', rest: '30 วินาที', benefit: '' },
+      { nameEN: 'Posterior Tibialis Activation', nameTH: 'กระตุ้นกล้ามเนื้อหลังแข้ง ด้วยท่า Posterior Tibialis', reps: '6 ครั้ง แต่ละเท้า', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '2–3',
     reflection: '',
@@ -402,7 +402,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Standing Fire Hydrant', nameTH: 'ยกขางอสะโพก — ยืน', reps: '8 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
+      { nameEN: 'Standing Fire Hydrant', nameTH: 'ยกขางอสะโพก ด้วยท่า Fire Hydrant', reps: '8 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
       { nameEN: 'Hip Extension', nameTH: 'เหยียดสะโพก', reps: '12 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
       { nameEN: 'Lateral Step', nameTH: 'ก้าวด้านข้าง — ยาง', reps: '6 ก้าว แต่ละทิศทาง', sets: '1 เซต', rest: '', benefit: '' }
     ],
@@ -420,7 +420,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก', reps: '12 ครั้ง', sets: '1 เซต', rest: '30 วินาที', benefit: '' },
+      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก ด้วยท่า Scapular Activation', reps: '12 ครั้ง', sets: '1 เซต', rest: '30 วินาที', benefit: '' },
       { nameEN: 'Chin Tuck', nameTH: 'ดึงคาง', reps: '8 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Chest Opener', nameTH: 'เปิดหน้าอก — กำแพง', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
@@ -438,8 +438,8 @@ const DAYS = [
     educationDuration: '4 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Cat-Camel', nameTH: 'แมว-อูฐ', reps: '6 รอบควบคุม', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Cat-Camel', nameTH: 'ยืดหลัง ด้วยท่า Cat-Camel', reps: '6 รอบควบคุม', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน ด้วยท่า T-Spine Rotation', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Toe Raises', nameTH: 'ยกปลายเท้า', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '1–2',
@@ -484,7 +484,7 @@ const DAYS = [
     exercises: [
       { nameEN: 'One-Leg Stand', nameTH: 'ยืนขาเดียว', reps: '10–12 วินาที แต่ละขา', sets: '2 เซต', rest: '30 วินาที', benefit: '' },
       { nameEN: 'Knee Bends', nameTH: 'งอเข่า — ยืน', reps: '10 ครั้ง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินส้นชิดปลายเท้า', reps: '10 ก้าว', sets: '1–2 เซต', rest: '', benefit: '' }
+      { nameEN: 'Heel-to-Toe Walk', nameTH: 'เดินต่อเท้า ด้วยท่า Heel-to-Toe Walk', reps: '10 ก้าว', sets: '1–2 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '2–3',
     reflection: '',
@@ -500,8 +500,8 @@ const DAYS = [
     educationDuration: '4 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'Wall Ankle Mobilization', nameTH: 'ยืดข้อเท้า — กำแพง', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน ด้วยท่า T-Spine Rotation', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Wall Ankle Mobilization', nameTH: 'ยืดข้อเท้า ด้วยท่า Wall Ankle Mobilization', reps: '6 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Hamstring Stretch', nameTH: 'ยืดหลังขา', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '1–2',
@@ -520,7 +520,7 @@ const DAYS = [
     exercises: [
       { nameEN: 'Hip Abduction', nameTH: 'ยกขาด้านข้าง', reps: '12 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
       { nameEN: 'Hip Extension', nameTH: 'เหยียดสะโพก', reps: '12 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
-      { nameEN: 'Standing Fire Hydrant', nameTH: 'ยกขางอสะโพก — ยืน', reps: '8 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Standing Fire Hydrant', nameTH: 'ยกขางอสะโพก ด้วยท่า Fire Hydrant', reps: '8 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '3–4',
     reflection: '',
@@ -537,8 +537,8 @@ const DAYS = [
     videoUrl: '',
     exercises: [
       { nameEN: 'Heel Walking', nameTH: 'เดินส้นเท้า', reps: '10 ก้าว', sets: '1–2 เซต', rest: '30 วินาที', benefit: '' },
-      { nameEN: 'Knee Extension', nameTH: 'เหยียดเข่า — ยาง', reps: '12 ครั้ง แต่ละขา', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
-      { nameEN: 'Posterior Tibialis Activation', nameTH: 'กระตุ้นหลังแข้ง', reps: '6 ครั้ง แต่ละเท้า', sets: '1 เซต', rest: '', benefit: '' }
+      { nameEN: 'Knee Extension', nameTH: 'เหยียดเข่า — ยืดยาง ด้วยท่า Knee Extension', reps: '12 ครั้ง แต่ละขา', sets: '1 เซต', rest: '45 วินาที', benefit: '' },
+      { nameEN: 'Posterior Tibialis Activation', nameTH: 'กระตุ้นกล้ามเนื้อหลังแข้ง ด้วยท่า Posterior Tibialis', reps: '6 ครั้ง แต่ละเท้า', sets: '1 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '3',
     reflection: '',
@@ -554,7 +554,7 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก', reps: '12 ครั้ง', sets: '1 เซต', rest: '30 วินาที', benefit: '' },
+      { nameEN: 'Scapular Activation', nameTH: 'กระตุ้นสะบัก ด้วยท่า Scapular Activation', reps: '12 ครั้ง', sets: '1 เซต', rest: '30 วินาที', benefit: '' },
       { nameEN: 'Shoulder Rotation', nameTH: 'หมุนไหล่', reps: '8 รอบช้าๆ', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Chest Opener', nameTH: 'เปิดหน้าอก', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
@@ -596,8 +596,8 @@ const DAYS = [
     educationDuration: '3 นาที',
     videoUrl: '',
     exercises: [
-      { nameEN: 'Cat-Camel', nameTH: 'แมว-อูฐ', reps: '6 รอบ', sets: '1 เซต', rest: '', benefit: '' },
-      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน', reps: '8 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'Cat-Camel', nameTH: 'ยืดหลัง ด้วยท่า Cat-Camel', reps: '6 รอบ', sets: '1 เซต', rest: '', benefit: '' },
+      { nameEN: 'T-Spine Rotation', nameTH: 'หมุนหลังส่วนบน ด้วยท่า T-Spine Rotation', reps: '8 ครั้ง แต่ละข้าง', sets: '1 เซต', rest: '', benefit: '' },
       { nameEN: 'Hamstring Stretch', nameTH: 'ยืดหลังขา', reps: '20 วินาที', sets: '2 เซต', rest: '', benefit: '' }
     ],
     rpeTarget: '1',
