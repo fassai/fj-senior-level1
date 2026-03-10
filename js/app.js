@@ -144,10 +144,10 @@
 
     const listEl = document.getElementById('consent-list');
     listEl.innerHTML = CONSENT_ITEMS.map((item, i) => `
-      <div class="consent-item" onclick="this.querySelector('input').click()">
+      <label class="consent-item">
         <input type="checkbox" id="consent-${i}" onchange="window._checkConsent()">
-        <label for="consent-${i}">${item}</label>
-      </div>
+        <span>${item}</span>
+      </label>
     `).join('');
 
     document.getElementById('btn-activate').addEventListener('click', () => {
